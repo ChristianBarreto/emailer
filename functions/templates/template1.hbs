@@ -1,0 +1,143 @@
+<div style="max-width:800px; margin-right: auto; margin-left:auto">
+    <div style="border-bottom: 1px solid #6c757d85">
+        <a href="https://www.roteiroapp.com/" style="color: black">
+            <img src="https://firebasestorage.googleapis.com/v0/b/meuroteiro-app.appspot.com/o/emails%2Femail_header.png?alt=media&token=3e148092-73d5-45de-98d1-df8cdbb0534c" alt="RoteiroApp.com - " style="height: 60px;" style="display: inline-block; vertical-align: text-bottom">
+        </a>
+    </div>
+
+    <div style="width:800px; margin-right: auto; margin-left:auto">
+        <h2>Olá, {{user.name}}!</h2>
+    </div>
+
+    <div style="width:800px; margin-right: auto; margin-left:auto">
+        <table style="width:100%;">
+            <tr>
+                <td style="color: #004085; background-color: #cce5ff; border: 1px solid#b8daff; border-radius: .25rem; padding: 10px">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="https://firebasestorage.googleapis.com/v0/b/meuroteiro-app.appspot.com/o/emails%2Fexclamation.png?alt=media&token=a2cb65c4-bab4-4790-9f96-8837542e1964" alt="Em Aberto" style="height: 50px;" style="display: inline-block; vertical-align: text-bottom">
+
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h3 style="margin: 1px">Você está a um passo da sua viagem!</h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Inclua novas atividades ou faça o pagamento para reservar.
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="width:800px; margin-right: auto; margin-left:auto">
+        <h3>Veja os detalhes da sua compra:</h3>
+    </div>
+
+    <br>
+
+    <div>
+        {{#each route.items.item}}
+        <div style="border: 1px solid gray; border-radius: .25rem; margin-bottom: 5px">
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 80px; vertical-align: top">
+                        <img src="{{this.service_details.images.0.url}}" alt="" style="width: 80px;">
+                    </td>
+                    <td style="text-align: left; vertical-align: top; padding: 10px">
+                        <h3>{{this.description}}</h3><br>
+                        {{this.service_details.short_description}}
+
+                    </td>
+
+                </tr>
+            </table>
+
+            <table style="width:100%; padding: 10px">
+                <tr>
+                    <td>
+                        <hr>
+                        <b>Detalhes desta compra:</b><br>
+                        <table style="margin-top: 5px">
+                            <tr>
+                                <td style="text-align: right; width: 100px">
+                                    <b>Reservas:</b>
+                                </td>
+                                <td>
+                                    {{this.quantity}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; width: 100px">
+                                    <b>Data:</b>
+                                </td>
+                                <td>
+                                    {{this.service_details.date_selected}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right">
+                                    <b>Início:</b>
+                                </td>
+                                <td>
+                                    {{this.service_details.start_at}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right">
+                                    <b>Fim:</b>
+                                </td>
+                                <td>
+                                    {{this.service_details.end_at}}
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+        </div>
+        {{/each}}
+    </div>
+
+    <br>
+
+    <h3 style="text-align: center">Veja também os detalhes da sua compra direto no App:</h3>
+
+    <a href="https://www.roteiroapp.com/#!/view_route/{{route.reference}}">
+        <div style="background-color: #007bff; color: #fff; padding: 10px; width: 100px; margin:10px; margin-right: auto; margin-left:auto; text-align: center">
+            <h3 style="text-decoration: none">Ver no App</h3>
+        </div>
+    </a>
+    <br>
+
+    <br>
+    <div style="max-width:800px; margin-right: auto; margin-left:auto; color: #383d41; background-color: #e2e3e5; border: 1px solid#d6d8db; border-radius: .25rem; padding: 10px">
+        Este é um e-mail automático da equipe RoteiroApp.com.<br>
+        <br>
+        <ul class="">
+            <li>
+                Em caso de dúvidas sobre detalhes dos passeios, entre em contato com a empresa responsável.
+            </li>
+            <li>
+                Em caso de dúvidas sobre pagamentos ou reservas, entre em contato com a equipe de suporte do RoteiroApp.com.
+            </li>
+        </ul>
+        Atenciosamente,<br>
+        A equipe <b>RoteiroApp.com</b>.
+    </div>
+    <br>
+
+</div>

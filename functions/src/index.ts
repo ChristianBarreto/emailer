@@ -1,7 +1,7 @@
 /* eslint-disable */
 // const {logger} = require("firebase-functions");
 const { onRequest } = require("firebase-functions/v2/https");
-const {initializeApp} = require("firebase-admin/app");
+// const {initializeApp} = require("firebase-admin/app");
 // import { getAnalytics } from "firebase/analytics";
 // const { getFirestore } = require("firebase-admin/firestore");
 const express = require("express");
@@ -13,7 +13,7 @@ import { Request, Response } from "express";
 import 'dotenv/config';
 
 var nodemailer = require('nodemailer');
-var hbs = require('nodemailer-express-handlebars');
+// var hbs = require('nodemailer-express-handlebars');
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -37,11 +37,46 @@ app.use(function(request: Request, response: Response, next: any) {
   next();
 });
 
-initializeApp(firebaseConfig);
 // const db = getFirestore();
 
 app.get("/", async (req: Request, res: Response) => {
   res.json({res: "Hello world!"});
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    tls:{
+      rejectUnauthorized: false
+    },
+    auth: {
+      user: process.env.SENDEREMAIL,
+      pass: process.env.SENDERPASS
+    }
+  });
+
+  // transporter.use('compile', hbs({
+  //  viewPath: 'templates',
+  //  extName: '.hbs'
+  // }));
+
+  var mailOptions = {
+    from: 'digitalstormdev@gmail.com',
+    to: "christiannabasbarreto@gmail.com",
+    subject: "Test",
+    text: 'Hello world'
+    // template: template,
+    // context: {
+    //   route: route,
+    //   user: user,
+    // }
+  };
+
+  transporter.sendMail(mailOptions, (error: any, info: any) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
 
 });
 
