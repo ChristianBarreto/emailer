@@ -20,15 +20,6 @@ dayjs.extend(timezone);
 
 export const app = express();
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyCmpj2Zrg__E5UFc6upPqGEO02uigR0Lco",
-  authDomain: "emailer-fbapp.firebaseapp.com",
-  projectId: "emailer-fbapp",
-  storageBucket: "emailer-fbapp.firebasestorage.app",
-  messagingSenderId: "607640779569",
-  appId: "1:607640779569:web:dbf02cb508f519305b4e10"
-};
-
 const envProduction = process.env.FUNCTIONS_EMULATOR !== 'true'
 
 export const mpApiKey = envProduction
